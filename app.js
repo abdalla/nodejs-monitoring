@@ -33,13 +33,16 @@ app.use(httpLogger)
 /////////////////////////////////
 app.get('/api', (req, res, next) => {
     logger.info('Api Works.') // added logger
+    console.log('PASSOU');
     res.status(200).send('Api Works.')
 })
 app.get('/api/fast', (req, res, next) => {
+    logger.warn("TEST WARNING FAST");
     res.status(200).send('Fast response!')
 })
 app.get('/api/slow', (req, res, next) => {
     setTimeout(() => {
+        logger.error("TEST WARNING SLOW");
         res.status(200).send('Slow response...')
     }, 1000)
 })
